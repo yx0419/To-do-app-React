@@ -1,13 +1,56 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* RESETS */
+/*reset means removing browser's built-in styles. */
+ul {
+  list-style: none;
+  padding: 0;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  width: 100%;
+  max-width: 68rem;
+  margin: 0 auto;
 }
+
+button {
+  border: none;
+  background: transparent;
+}
+
+/*END RESETS*/
+/*GLOBAL STYLES*/
+/*button and .btn are the same thing.*/
+/*toggle-btn means only three buttons: All, Active, Completed*/
+div {
+  margin: 13px;
+}
+
+.btn {
+  padding: 6px;
+  margin: 3px;
+  border: 1px solid #4d4d4d;
+  cursor: pointer;
+}
+
+.btn.toggle-btn {
+  border-width: 1px;
+  border-color: #2bdf03;
+}
+
+.btn.toggle-btn[aria-pressed="true"] {
+  text-decoration: underline;
+  border-color: #209242;
+}
+
+.btn__danger {
+  color: #fff;
+  background-color: #ca3c3c;
+  border-color: #bd2130;
+}
+
+.btn__primary {
+  color: #fff;
+  background-color: #000;
+}
+/* For a <button> element, when selected, 
+the border color is blue by chrome default. 
+(only when there is a border-width > 0). */
