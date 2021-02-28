@@ -1,6 +1,15 @@
 import Todo from "./components/Todo";
 
 function App(props) {
+  const TodosArray = props.tasksArr.map((obj) => (
+    <Todo
+      subject={obj.subject}
+      isCompleted={obj.isCompleted}
+      id={obj.id}
+      key={obj.id}
+    />
+  ));
+
   return (
     <div className="todoapp stack-large">
       <h1>TodoMatic</h1>
@@ -27,11 +36,7 @@ function App(props) {
 
       <h2>3 tasks remaining</h2>
 
-      <ul>
-        <Todo subject="Read" isCompleted={true} id="todo-0" />
-        <Todo subject="Exercise" isCompleted={false} id="todo-1" />
-        <Todo subject="Sleep" isCompleted={false} id="todo-2" />
-      </ul>
+      <ul>{TodosArray}</ul>
     </div>
   );
 }
