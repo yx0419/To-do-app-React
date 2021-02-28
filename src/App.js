@@ -1,3 +1,5 @@
+import Todo from "./components/Todo";
+
 function App(props) {
   return (
     <div className="todoapp stack-large">
@@ -23,28 +25,12 @@ function App(props) {
         <span>Completed</span>
       </button>
 
-      <h2>2 tasks remaining</h2>
+      <h2>3 tasks remaining</h2>
 
       <ul>
-        <li>
-          <input type="checkbox"></input>
-          <span>Eat</span>
-
-          <div>
-            <button className="btn">Edit</button>
-            <button className="btn btn__danger">Delete</button>
-          </div>
-        </li>
-
-        <li>
-          <input type="checkbox"></input>
-          <span>Sleep</span>
-
-          <div>
-            <button className="btn">Edit</button>
-            <button className="btn btn__danger">Delete</button>
-          </div>
-        </li>
+        <Todo subject="Read" isCompleted={true} id="todo-0" />
+        <Todo subject="Exercise" isCompleted={false} id="todo-1" />
+        <Todo subject="Sleep" isCompleted={false} id="todo-2" />
       </ul>
     </div>
   );
