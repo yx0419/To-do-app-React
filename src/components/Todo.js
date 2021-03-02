@@ -14,7 +14,12 @@ export default function Todo(props) {
 
       <div>
         <button className="btn">Edit</button>
-        <button className="btn btn__danger">Delete</button>
+        <button
+          className="btn btn__danger"
+          onClick={() => props.deleteTask(props.id)}
+        >
+          Delete
+        </button>
       </div>
     </li>
   );

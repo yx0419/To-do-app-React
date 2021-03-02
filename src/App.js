@@ -33,6 +33,14 @@ function App(props) {
     console.log(tasksArray);
   }
 
+  // a function for updating our state.
+  // settasksArray's argument should be a new array that copies the existing tasks, excluding the task whose ID matches the one passed into deleteTask(). So need to use Array.prototype.filter().
+  function deleteTask(id) {
+    console.log("Received id." + id);
+    const updatedArr = tasksArray.filter((task) => task.id !== id);
+    settasksArray(updatedArr);
+  }
+
   //'tasksArray' is being updated every time callback is called.
   const TodosArray = tasksArray.map((obj) => (
     <Todo
@@ -41,6 +49,7 @@ function App(props) {
       id={obj.id}
       key={obj.id}
       toggleTaskCompleted={toggleTaskCompleted}
+      deleteTask={deleteTask}
     />
   ));
 
