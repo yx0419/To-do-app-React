@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import { nanoid } from "nanoid";
 
 function App(props) {
-  const [tasksArray, settasksArray] = useState(props.tasksArr);
+  const [tasksArray, settasksArray] = useState(props.tasksArr); //'tasksArray' is an array of objects.
 
   //callback function 'callbackInParent' in the parent component.
   //Pass this callback as a prop to the child component so that child can call this callback with data.
@@ -14,9 +14,23 @@ function App(props) {
     const newTask = {
       id: "todo-" + nanoid(),
       subject: subject,
-      completed: false,
+      isCompleted: false,
     };
     settasksArray([...tasksArray, newTask]); //state called 'tasksArray' will contain a new array: [...tasksArray, newTask] now by adding a new object element 'newTask' to the array.
+  }
+
+  function toggleTaskCompleted(id) {
+    console.log(tasksArray);
+    //need to update tasksArray with received id. only need to update 'complete' key in tasksArray's one element.
+    const updatedArray = tasksArray.map((task) => {
+      if (id === task.id) {
+        return { ...task, isCompleted: !task.isCompleted };
+      } else {
+        return task; //without this line, 'subject' will be undefined and error.
+      }
+    });
+    settasksArray(updatedArray);
+    console.log(tasksArray);
   }
 
   //'tasksArray' is being updated every time callback is called.
@@ -26,8 +40,13 @@ function App(props) {
       isCompleted={obj.isCompleted}
       id={obj.id}
       key={obj.id}
+      toggleTaskCompleted={toggleTaskCompleted}
     />
   ));
+
+  const numOfTask = TodosArray.length;
+  const taskNoun = TodosArray.length === 1 ? "Task" : "Tasks";
+  const countSentence = `${numOfTask} ${taskNoun} to do`;
 
   return (
     <div className="todoapp stack-large">
@@ -39,7 +58,7 @@ function App(props) {
         <FilterButton btnName="Completed" ariapressed="false" />
       </div>
 
-      <h2>3 tasks remaining</h2>
+      <h2>{countSentence}</h2>
 
       <ul>{TodosArray}</ul>
     </div>

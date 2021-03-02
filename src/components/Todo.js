@@ -8,6 +8,7 @@ export default function Todo(props) {
         id={props.id}
         type="checkbox"
         defaultChecked={props.isCompleted}
+        onChange={() => props.toggleTaskCompleted(props.id)} //pass id of targeted Element to <App /> so that <App /> knows which task's checkbox is clicked.
       ></input>
       <span>{props.subject}</span>
 
