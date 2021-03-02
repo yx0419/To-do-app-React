@@ -2,14 +2,14 @@ import React, { useState } from "react";
 
 function Form(props) {
   const [subject, setSubject] = useState(""); //initial value of the state called 'subject' is empty string. This state is for user input value.
-  console.log("line5" + subject); //This proves UI is re-rendered after setSubject().
+  console.log("line5" + subject); //This proves UI is re-rendered right after setSubject().
 
   function handleChange(e) {
     console.log("line8" + subject);
     setSubject(e.target.value); //because user input value is coming from Form component itself, not from outside of this component, we need to use state.
     console.log("line10" + subject);
   }
-  //Right after setSubject() is called, entire Form() is re-called. re-run. Every UI is re-rendered with the new state.
+  //Right after setSubject() is called, entire Form() is re-called, re-run. Every UI is re-rendered with the new state.
 
   //create a new task
   function handleSubmit(e) {
