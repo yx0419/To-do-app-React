@@ -2,6 +2,7 @@ import Todo from "./components/Todo";
 import Form from "./components/Form.js";
 import FilterButton from "./components/FilterButton";
 import React, { useState } from "react";
+import { nanoid } from "nanoid";
 
 function App(props) {
   const [tasksArray, settasksArray] = useState(props.tasksArr);
@@ -10,7 +11,11 @@ function App(props) {
   //Pass this callback as a prop to the child component so that child can call this callback with data.
   //It receives data 'subject' from child component <Form />.
   function callbackInParent(subject) {
-    const newTask = { id: "id", subject: subject, completed: false };
+    const newTask = {
+      id: "todo-" + nanoid(),
+      subject: subject,
+      completed: false,
+    };
     settasksArray([...tasksArray, newTask]); //state called 'tasksArray' will contain a new array: [...tasksArray, newTask] now by adding a new object element 'newTask' to the array.
   }
 
