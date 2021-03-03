@@ -36,8 +36,23 @@ function App(props) {
   // a function for updating our state.
   // settasksArray's argument should be a new array that copies the existing tasks, excluding the task whose ID matches the one passed into deleteTask(). So need to use Array.prototype.filter().
   function deleteTask(id) {
-    console.log("Received id." + id);
+    console.log("Received id for deleting." + id);
     const updatedArr = tasksArray.filter((task) => task.id !== id);
+    settasksArray(updatedArr);
+  }
+
+  //newName is what editTask receives from 'EditTask' component.
+  function editTask(id, newName) {
+    console.log("Received id for editing." + id);
+    const updatedArr = tasksArray.map((task) => {
+      if (id === task.id) {
+        //if this task has the same id as the edited task.
+        return { ...task, subject: newName }; //replace name key with new value. Rest stays the same.
+      } else {
+        return task; //without this line, 'subject' will be undefined and error.
+      }
+    });
+    console.log(updatedArr);
     settasksArray(updatedArr);
   }
 
@@ -50,6 +65,7 @@ function App(props) {
       key={obj.id}
       toggleTaskCompleted={toggleTaskCompleted}
       deleteTask={deleteTask}
+      editTask={editTask}
     />
   ));
 
